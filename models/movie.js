@@ -1,4 +1,4 @@
-import dbConnection from "../config/mongoConnection.js";
+import connectToDatabase from "../config/mongoConnection.js";
 import mongoose from "mongoose";
 
 const movieSchema = new mongoose.Schema({
@@ -18,6 +18,15 @@ const movieSchema = new mongoose.Schema({
     thumbnail_height: Number
 }) 
 
-const Movie = dbConnection.model('Movie', movieSchema);
+const createModel = async () => {
+    try {
+        const dbConnection = await connectToDatabase();
+        return dbConnection.model('Movie', movieSchema);
+    } catch (error) {
+        throw error;
+    }
+}
+
+const Movie = await createModel();
 
 export default Movie;
