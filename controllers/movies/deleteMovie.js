@@ -1,4 +1,4 @@
-import Movie from '../config/mongoConnection.js'
+import Movie from '../../models/movie.js';
 
 const deleteSingleMovie = async (req, res) => {
     try {

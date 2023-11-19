@@ -1,9 +1,9 @@
 import express from 'express';
-import getMovies from './controllers/getMovies.js';
-import getSingleMovie from './controllers/getSingleMovie.js';
-import createMovie from './controllers/createMovie.js';
-import deleteSingleMovie from './controllers/deleteMovie.js';
-import updateMovie from './controllers/updateMovie.js';
+import getMovies from './controllers/movies/getMovies.js';
+import getSingleMovie from './controllers/movies/getSingleMovie.js';
+import createMovie from './controllers/movies/createMovie.js';
+import deleteSingleMovie from './controllers/movies/deleteMovie.js';
+import updateMovie from './controllers/movies/updateMovie.js';
 
 const movieRoutes = express.Router();
 

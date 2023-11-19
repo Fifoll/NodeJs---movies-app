@@ -1,15 +1,17 @@
-import Movie from '../config/mongoConnection.js';
+import Movie from '../../models/movie.js';
 
-const createMovie = async (req, res) => {
+const updateMovie = async (req, res) => {
     try {
-        const movie = new Movie(req.body);
-        await movie.validate();
-        await movie.save();
+        const movieId = req.params.id;
+        const options = {
+            runValidators: true
+        }
+        await Movie.findByIdAndUpdate(movieId, req.body, options);
         res.status = 200;
         res.send({
             success: true,
-            message: `Create new movie with id ${movie._id}`,
-            data: movie,
+            message: `Updated movie with id ${movieId}`,
+            data: {}
         });
     } catch (err) {
         if (err.name === 'ValidationError') {
@@ -35,4 +37,4 @@ const createMovie = async (req, res) => {
     }
 };
 
-export default createMovie;
+export default updateMovie;
